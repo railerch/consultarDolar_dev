@@ -43,10 +43,16 @@ window.addEventListener("load", function () {
                 ]
             });
 
+        }).catch(err => {
+            this.setTimeout(() => {
+                // Ocultar preloader y dar aviso del error
+                $("#preloader-modal").modal("hide");
 
+                $("#error-modal").modal("show");
 
-
-        }).catch(err => console.log("HA OCURRIDO UN ERROR: " + err))
+                console.log("HA OCURRIDO UN ERROR: " + err)
+            }, 500)
+        })
 
     // ACTUALIZAR PAGINA
     document.getElementById("actuallizar-btn").addEventListener("click", function () {
