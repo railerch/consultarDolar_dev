@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+
+    <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <link rel="stylesheet" href="bsi/bootstrap-icons.css">
+    <link rel="stylesheet" href="dt/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="css/main-style.css">
+
+    <link rel="shortcut icon" href="img/dollar-symbol.png" type="image/x-icon">
+
+    <script type="text/javascript" src="jq/jquery.js" defer></script>
+    <script type="text/javascript" src="bs/js/bootstrap.bundle.js" defer></script>
+    <script type="text/javascript" src="dt/js/jquery.dataTables.js" defer></script>
+    <script type="module" src="js/main-app.js" defer></script>
+
+    <title>Tasa de cambio USD</title>
+</head>
+
+<body>
+    <div class="container pt-2 mb-3">
+        <div class="d-flex flex-wrap justify-content-between">
+            <div class="mb-2">
+                <h2 class="text-muted">Tasa de cambio USD</h2>
+                <small id="fecha-consulta"></small>
+            </div>
+            <button id="actuallizar-btn" class="btn btn-outline-primary" type="button"><i
+                    class="bi bi-arrow-repeat"></i> ACTUALIZAR</button>
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table id="monitor-tbl" class="table table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Fuente</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cambio</th>
+                        <th scope="col">Ult. Actualización</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- REGISTROS -->
+                </tbody>
+            </table>
+            <hr>
+            <p><b>Request API:</b>
+                <%= host %>/fuentes/[fuente | todo]
+            </p>
+        </div>
+    </div>
+
+    <!-- VENTANAS MODAL -->
+    <div class="modal fade" id="preloader-modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="alert alert-info m-0" role="alert">
+                        <strong>
+                            <img src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.4/images/loading.gif" alt="">
+                            <span class="ms-2">Consultando datos...</span></strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
