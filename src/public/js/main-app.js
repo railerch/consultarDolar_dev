@@ -1,5 +1,15 @@
 window.addEventListener("load", function () {
     // CREDENCIALES
+
+    // Externa
+    // let server = "http://nodesrv.dnsalias.com";
+    // let port = 8185;
+
+    // Local
+    let server = "localhost";
+    let port = 8085;
+
+    // Credenciales
     let user = "root";
     let pass = "$ro123ot$";
 
@@ -9,7 +19,7 @@ window.addEventListener("load", function () {
     // CONSULTAR FUENTES
     let cred = btoa(`${user}:${pass}`);
 
-    fetch("/divisas/todo", { headers: { Authorization: `Basic ${cred}` } })
+    fetch(`${server}:${port}/divisas/todo`, { headers: { Authorization: `Basic ${cred}` } })
         .then(res => res.json())
         .then(res => {
             if (!res.credErr) {
