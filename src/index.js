@@ -29,7 +29,7 @@ APP.get("/", (req, res) => {
     res.end();
 })
 
-APP.use("/fuentes", DIVISAS);
+APP.use("/divisas", DIVISAS);
 
 // SERVER
 APP.listen(APP.get("port"), () => {

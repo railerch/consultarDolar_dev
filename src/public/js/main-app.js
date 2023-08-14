@@ -9,7 +9,7 @@ window.addEventListener("load", function () {
     // CONSULTAR FUENTES
     let cred = btoa(`${user}:${pass}`);
 
-    fetch("/fuentes/todo", { headers: { Authorization: `Basic ${cred}` } })
+    fetch("/divisas/todo", { headers: { Authorization: `Basic ${cred}` } })
         .then(res => res.json())
         .then(res => {
             if (!res.credErr) {
