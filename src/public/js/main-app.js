@@ -7,8 +7,7 @@ window.addEventListener("load", function () {
     if (dev) {
         server = "";
     } else {
-        server = document.getElementById("server-url").innerText;
-        console.log("Fetch to: " + server)
+        server = `${document.getElementById("server-url").innerText.trim()}/divisas/todo`;
     }
 
     // Credenciales
@@ -21,7 +20,7 @@ window.addEventListener("load", function () {
     // CONSULTAR FUENTES
     let cred = btoa(`${user}:${pass}`);
 
-    fetch(`${server}/divisas/todo`, { headers: { Authorization: `Basic ${cred}` } })
+    fetch(server, { headers: { Authorization: `Basic ${cred}` } })
         .then(res => res.json())
         .then(res => {
             if (!res.credErr) {
