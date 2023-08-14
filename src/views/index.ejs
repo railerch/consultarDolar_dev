@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="dt/css/jquery.dataTables.css">
     <link rel="stylesheet" href="css/main-style.css">
 
-    <link rel="shortcut icon" href="img/dollar-symbol.png" type="image/x-icon">
+    <link rel="shortcut icon" href="<%= favicon %>" type="image/x-icon">
 
     <script type="text/javascript" src="jq/jquery.js" defer></script>
     <script type="text/javascript" src="bs/js/bootstrap.bundle.js" defer></script>
@@ -24,9 +24,15 @@
 <body>
     <div class="container pt-2 mb-3">
         <div class="d-flex flex-wrap justify-content-between">
-            <div class="mb-2">
-                <h2 class="text-muted">Tasa de cambio USD</h2>
-                <small id="fecha-consulta"></small>
+            <div class="d-flex align-items-center d-grid gap-3 mb-2">
+                <div>
+                    <img id="logo-bosto-img" class="img-fluid" src="<%= logo %>" alt="<%= empresa %>"
+                        style="width:100px">
+                </div>
+                <div>
+                    <h2 class="text-muted">Tasa de cambio USD</h2>
+                    <small id="fecha-consulta"></small>
+                </div>
             </div>
             <button id="actuallizar-btn" class="btn btn-outline-primary" type="button"><i
                     class="bi bi-arrow-repeat"></i> ACTUALIZAR</button>
@@ -47,9 +53,29 @@
                 </tbody>
             </table>
             <hr>
-            <p><b>Request API:</b>
-                <%= host %>/fuentes/[fuente | todo]
-            </p>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Request API
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <ul>
+                                <li><b>URL:</b>
+                                    <span id="server-url">
+                                        <%= host %>
+                                    </span>/divisas/[fuente | todo]
+                                </li>
+                                <li class="text-danger">Requiere credenciales de acceso.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

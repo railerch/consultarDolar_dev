@@ -7,8 +7,8 @@ const DIVISAS = require("./routers/tasa-cambio-rt");
 const CORS = require("./middlewares/cors");
 
 // CONFIG
-APP.set("server", config[0].serverurl);
-APP.set("port", config[0]["serverport"]);
+APP.set("server", config[0].server);
+APP.set("port", config[0].port);
 APP.set("view engine", "ejs");
 APP.set("views", PATH.join(__dirname, "views"));
 
@@ -23,9 +23,12 @@ APP.use(express.urlencoded({ extended: false }));
 
 // ROUTES
 APP.get("/", (req, res) => {
-    console.log(URL.parse(req.url));
-    res.header("content-type", "text/html");
-    res.render("index", { host: `http://${APP.get("server")}:${APP.get("port")}` });
+    res.header("content-type", "text/html").render("index", {
+        host: `${config[1].server}:${config[1].port}`,
+        logo: config[2].logo,
+        empresa: config[2].empresa,
+        favicon: config[2].favicon
+    });
     res.end();
 })
 
