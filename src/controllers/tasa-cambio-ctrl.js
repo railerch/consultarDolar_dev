@@ -2,6 +2,7 @@
 // https://www.npmjs.com/package/consulta-dolar-venezuela
 
 const consulta = require("consulta-dolar-venezuela");
+const config = require("../config.json");
 
 // CONSULTA GLOBAL DE DIVISAS
 const consultar_fuentes = (req, res) => {
@@ -9,8 +10,7 @@ const consultar_fuentes = (req, res) => {
     if (req.headers.authorization) {
         // Validar credenciales de autenticacion
         let cred = atob(req.headers.authorization.split(" ")[1]).split(":");
-
-        if (cred[0] === "root" && cred[1] === "$ro123ot$") {
+        if (cred[0] === config[3].user && cred[1] === config[3].pass) {
             let fuente = req.params.fuente != "todo" ? req.params.fuente.toUpperCase() : null;
             consulta.getMonitor(`${fuente}`, "price").then(val => {
                 res.status(200).header("content-type", "application/json").send(JSON.stringify(val)).end();

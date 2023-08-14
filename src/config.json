@@ -15,5 +15,10 @@
         "empresa": "Bosto Group",
         "logo": "img/logoEmpresa.png",
         "favicon": "img/favicon.png"
+    },
+    {
+        "authorization": true,
+        "user": "root",
+        "pass": "$ro123ot$"
     }
 ]

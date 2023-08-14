@@ -1,16 +1,15 @@
 window.addEventListener("load", function () {
-    // CREDENCIALES
 
-    // Externa
+    // URL CONFIG
     let dev = true; // Cambiar a false si es produccion
     let server;
     if (dev) {
-        server = "";
+        server = "/divisas/todo";
     } else {
         server = `${document.getElementById("server-url").innerText.trim()}/divisas/todo`;
     }
 
-    // Credenciales
+    // Credenciales de acceso a la API
     let user = "root";
     let pass = "$ro123ot$";
 
